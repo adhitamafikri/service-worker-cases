@@ -20,6 +20,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       Click on the Vite and TypeScript logos to learn more
     </p>
   </div>
+
+  <div id="sw-img"></div>
 `;
 
 setupSW();

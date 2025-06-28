@@ -22,7 +22,7 @@ export function setupSW() {
     setTimeout(() => {
       const img = new Image();
       img.src = "/mouse.svg";
-      document.body.appendChild(img);
+      document.querySelector<HTMLDivElement>("#sw-img")!.appendChild(img);
     }, 3000);
   } else {
     console.warn("Service Workers are not supported in this browser.");
