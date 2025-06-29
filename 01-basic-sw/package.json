@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build:sw": "tsc --build ./src/sw/tsconfig.json",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
