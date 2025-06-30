@@ -18,13 +18,5 @@ self.addEventListener("fetch", (event: FetchEvent) => {
   // same-origin and the path is '/mouse.svg'
   if (url.origin == location.origin && url.pathname == "/sheep.svg") {
     event.respondWith(caches.match("/mouse.svg"));
-    // caches.match("/mouse.svg").then((response) => {
-    //   if (response) {
-    //     console.log("Found response in cache for this resource:", url.href);
-    //     event.respondWith(response);
-    //   } else {
-    //     console.log("No response found in cache for this resource:", url.href);
-    //   }
-    // });
   }
 });
