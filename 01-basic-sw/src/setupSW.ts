@@ -7,7 +7,7 @@ export function setupSW() {
 
     const timeout = setTimeout(() => {
       const img = new Image();
-      img.src = "/mouse.svg";
+      img.src = "/sheep.svg";
       document.querySelector<HTMLDivElement>("#sw-img")!.appendChild(img);
       clearTimeout(timeout);
     }, 3000);
