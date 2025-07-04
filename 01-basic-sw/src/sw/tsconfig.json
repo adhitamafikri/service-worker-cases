@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "../../public",
-    "target": "ES2020",
+    "target": "ES2015",
     "lib": ["WebWorker", "ES2020"],
   },
   "include": ["sw.ts"]
