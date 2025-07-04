@@ -22,5 +22,5 @@
     "noUncheckedSideEffectImports": true
   },
   "include": ["src"],
-  "exclude": ["src/sw/sw.ts"]
+  "exclude": ["src/sw/v2.sw.ts"]
 }

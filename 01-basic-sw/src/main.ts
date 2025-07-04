@@ -21,7 +21,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     </p>
   </div>
 
-  <div id="sw-img"></div>
+  <div class="sw-img-group">
+    <div id="sw-img-1" class="sw-img"></div>
+    <div id="sw-img-2" class="sw-img"></div>
+  </div>
 `;
 
 setupSW();

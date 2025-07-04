@@ -6,9 +6,13 @@ export function setupSW() {
       .catch((err) => console.log("Boo!", err));
 
     const timeout = setTimeout(() => {
-      const img = new Image();
-      img.src = "/sheep.svg";
-      document.querySelector<HTMLDivElement>("#sw-img")!.appendChild(img);
+      const img1 = new Image();
+      img1.src = "/sheep.svg";
+      document.querySelector<HTMLDivElement>("#sw-img-1")!.appendChild(img1);
+
+      const img2 = new Image();
+      img2.src = "/mouse.svg";
+      document.querySelector<HTMLDivElement>("#sw-img-2")!.appendChild(img2);
       clearTimeout(timeout);
     }, 3000);
   } else {
