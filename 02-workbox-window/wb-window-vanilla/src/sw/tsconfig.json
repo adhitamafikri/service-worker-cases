@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outFile": "../../public/sw.js",
+    "target": "ES2015",
+    "lib": ["WebWorker", "ES2020"]
+  },
+  "files": ["sw.ts"],
+  // "exclude": ["../../node_modules"]
+}

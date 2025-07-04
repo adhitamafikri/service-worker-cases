@@ -1,0 +1,19 @@
+{
+  "name": "wb-window-vanilla",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:sw": "tsc --build ./src/sw/tsconfig.json",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3",
+    "vite": "^7.0.0"
+  },
+  "dependencies": {
+    "workbox-window": "^7.3.0"
+  }
+}
