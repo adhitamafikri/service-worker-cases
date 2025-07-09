@@ -7,11 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const expectedCaches = ["static-v2"];
+const SW_VERSION = "v1.0.0";
+const expectedCaches = ["static-v1"];
 function precacheResources() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const cache = yield caches.open("static-v2");
+            const cache = yield caches.open("static-v1");
             // cache.addAll(["/mouse.svg"]);
             cache.addAll(["/camel.svg", "/elephant.svg"]);
         }
@@ -48,7 +49,7 @@ self.addEventListener("activate", (event) => {
     event.waitUntil(clearUnusedCaches());
 });
 self.addEventListener("fetch", (event) => __awaiter(this, void 0, void 0, function* () {
-    console.log("from the service worker fetch event: ", event);
+    console.log("from the service worker fetch event: ", event.request.url);
     const url = new URL(event.request.url);
     if (url.origin == location.origin) {
         if (url.pathname == "/sheep.svg") {
@@ -59,3 +60,8 @@ self.addEventListener("fetch", (event) => __awaiter(this, void 0, void 0, functi
         }
     }
 }));
+self.addEventListener("message", (event) => {
+    if (event.data.type === "GET_VERSION") {
+        event.ports[0].postMessage(SW_VERSION);
+    }
+});

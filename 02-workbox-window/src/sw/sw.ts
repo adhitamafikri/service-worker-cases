@@ -1,8 +1,9 @@
-const expectedCaches = ["static-v2"];
+const SW_VERSION = "v1.0.0";
+const expectedCaches = ["static-v1"];
 
 async function precacheResources() {
   try {
-    const cache = await caches.open("static-v2");
+    const cache = await caches.open("static-v1");
     // cache.addAll(["/mouse.svg"]);
     cache.addAll(["/camel.svg", "/elephant.svg"]);
   } catch (error) {
@@ -42,7 +43,7 @@ self.addEventListener("activate", (event: ExtendableEvent) => {
 });
 
 self.addEventListener("fetch", async (event: FetchEvent) => {
-  console.log("from the service worker fetch event: ", event);
+  console.log("from the service worker fetch event: ", event.request.url);
   const url = new URL(event.request.url);
 
   if (url.origin == location.origin) {
@@ -52,5 +53,11 @@ self.addEventListener("fetch", async (event: FetchEvent) => {
     if (url.pathname == "/mouse.svg") {
       event.respondWith(caches.match("/elephant.svg"));
     }
+  }
+});
+
+self.addEventListener("message", (event: ExtendableMessageEvent) => {
+  if (event.data.type === "GET_VERSION") {
+    event.ports[0].postMessage(SW_VERSION);
   }
 });

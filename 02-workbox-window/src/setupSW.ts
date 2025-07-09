@@ -1,8 +1,12 @@
 export async function setupSW() {
   if ("serviceWorker" in navigator) {
-    const { Workbox } = await import("workbox-window");
-    const wb = new Workbox("/sw.js");
     try {
+      console.log("-----------------------------------");
+      console.log("FROM THE PROJECT 02-workbox-window");
+      console.log("-----------------------------------\n\n\n");
+
+      const { Workbox } = await import("workbox-window");
+      const wb = new Workbox("/sw.js");
       await wb.register();
       console.log("Workbox SW registered!", wb);
 
