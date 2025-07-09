@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:sw": "tsc --build ./src/sw/tsconfig.json",
     "lint": "eslint .",
     "preview": "vite preview"
   },
