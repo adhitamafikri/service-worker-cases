@@ -1,12 +1,10 @@
-// const SW_VERSION = "v1.0.0";
-
-const expectedCaches = ["static-v1"];
+const expectedCaches = ["static-v2"];
 
 async function precacheResources() {
   try {
-    const cache = await caches.open("static-v1");
-    cache.addAll(["/mouse.svg"]);
-    // cache.addAll(["/camel.svg", "/elephant.svg"]);
+    const cache = await caches.open("static-v2");
+    // cache.addAll(["/mouse.svg"]);
+    cache.addAll(["/camel.svg", "/elephant.svg"]);
   } catch (error) {
     console.error("Failed to precache resources:", error);
   }
@@ -22,7 +20,7 @@ async function clearUnusedCaches() {
         }
       })
     );
-    console.log("V1 now ready to handle fetches guys!");
+    console.log("v2 now ready to handle fetches guys!");
   } catch (error) {
     console.error("Failed to clear unused caches:", error);
   }
@@ -30,9 +28,8 @@ async function clearUnusedCaches() {
 
 function putInCache() {}
 
-// Listeners
 self.addEventListener("install", (event: ExtendableEvent) => {
-  console.log("V1 installing…");
+  console.log("v2 installing…");
 
   // execute precaching logic while installing the Service Worker
   event.waitUntil(precacheResources());
@@ -48,16 +45,12 @@ self.addEventListener("fetch", async (event: FetchEvent) => {
   console.log("from the service worker fetch event: ", event);
   const url = new URL(event.request.url);
 
-  // serve the mouse SVG from the cache if the request is
-  // same-origin and the path is '/sheep.svg'
-  if (url.origin == location.origin && url.pathname == "/sheep.svg") {
-    event.respondWith(caches.match("/mouse.svg"));
+  if (url.origin == location.origin) {
+    if (url.pathname == "/sheep.svg") {
+      event.respondWith(caches.match("/camel.svg"));
+    }
+    if (url.pathname == "/mouse.svg") {
+      event.respondWith(caches.match("/elephant.svg"));
+    }
   }
 });
-
-// self.addEventListener("message", (event: ExtendableMessageEvent) => {
-//   console.log("from the service worker message event: ", event);
-//   if (event.data && event.data.type === "GET_VERSION") {
-//     event.ports[0].postMessage(SW_VERSION);
-//   }
-// });
