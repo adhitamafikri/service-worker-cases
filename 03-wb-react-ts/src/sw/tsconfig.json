@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    // "outDir": "../../public",
-    "outFile": "../../public/sw.js",
+    "outDir": "../../public",
     "target": "ES2015",
     "lib": ["WebWorker", "ES2020"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext"
   },
   "files": ["sw.ts"]
 }

@@ -40,3 +40,24 @@
 .read-the-docs {
   color: #888;
 }
+
+.sw-img-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sw-img {
+  width: 240px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sw-img img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
