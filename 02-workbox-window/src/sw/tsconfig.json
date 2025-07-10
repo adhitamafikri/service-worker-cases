@@ -3,8 +3,8 @@
     "outDir": "../../public",
     "target": "ES2015",
     "lib": ["WebWorker", "ES2020"],
-    "module": "esnext",
-    "moduleResolution": "node"
+    "module": "nodenext",
+    "moduleResolution": "nodenext"
   },
   "files": ["sw.ts"]
 }
